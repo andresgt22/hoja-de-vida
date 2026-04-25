@@ -49,22 +49,27 @@ function cargar() {
     animarBarras();
 }
 
-// CAMBIAR SECCIONES
-function mostrar(e, id) {
-    document.querySelectorAll('.modulo').forEach(sec => {
-        sec.classList.remove('activo');
+// BOTONES (FIX PRO)
+document.querySelectorAll('.menu button').forEach(btn => {
+    btn.addEventListener('click', () => {
+
+        const id = btn.getAttribute('data-id');
+
+        document.querySelectorAll('.modulo').forEach(sec => {
+            sec.classList.remove('activo');
+        });
+
+        document.getElementById(id).classList.add('activo');
+
+        document.querySelectorAll('.menu button').forEach(b => {
+            b.classList.remove('activo');
+        });
+
+        btn.classList.add('activo');
+
+        animarBarras();
     });
-
-    document.getElementById(id).classList.add('activo');
-
-    document.querySelectorAll('.menu button').forEach(btn => {
-        btn.classList.remove('activo');
-    });
-
-    e.target.classList.add('activo');
-
-    animarBarras();
-}
+});
 
 // ANIMAR BARRAS
 function animarBarras() {
@@ -77,7 +82,7 @@ function animarBarras() {
     });
 }
 
-// TEXTO TERMINAL
+// TERMINAL
 const texto = `
 > Iniciando sistema...
 > Cargando módulos...
