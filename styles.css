@@ -3,10 +3,9 @@ body {
     font-family: 'JetBrains Mono', monospace;
     background: radial-gradient(circle at top, #1a1a2e, #0a0a0a 70%);
     color: #00ffcc;
-    overflow-x: hidden;
 }
 
-/* FONDO PRO */
+/* FONDO */
 body::before {
     content: "";
     position: fixed;
@@ -42,7 +41,6 @@ body::before {
 }
 
 .menu button {
-    position: relative;
     margin: 8px 0;
     background: none;
     border: none;
@@ -51,26 +49,6 @@ body::before {
     cursor: pointer;
     border-radius: 8px;
     transition: 0.3s;
-    overflow: hidden;
-}
-
-.menu button:active {
-    transform: scale(0.95);
-}
-
-.menu button::before {
-    content: "";
-    position: absolute;
-    left: -100%;
-    top: 0;
-    width: 100%;
-    height: 100%;
-    background: linear-gradient(90deg, transparent, #00ffcc33, transparent);
-    transition: 0.4s;
-}
-
-.menu button:hover::before {
-    left: 100%;
 }
 
 .menu button:hover {
@@ -93,22 +71,15 @@ body::before {
     background: rgba(0, 0, 0, 0.6);
     backdrop-filter: blur(12px);
     border: 1px solid rgba(0,255,204,0.2);
-    box-shadow: 0 0 30px rgba(0,255,204,0.1);
 }
 
 /* MODULOS */
 .modulo {
     display: none;
-    animation: fade 0.3s ease;
 }
 
 .modulo.activo {
     display: block;
-}
-
-@keyframes fade {
-    from {opacity: 0;}
-    to {opacity: 1;}
 }
 
 /* TERMINAL */
@@ -117,49 +88,18 @@ body::before {
     padding: 15px;
     border-radius: 10px;
     margin-bottom: 20px;
-    box-shadow: 0 0 20px #00ffcc55;
-    position: relative;
 }
 
-.hacker::before {
-    content: "● ● ●";
-    position: absolute;
-    top: 5px;
-    left: 10px;
-    color: #ff5f56;
-}
-
-#terminal {
-    height: 120px;
-    overflow: hidden;
-}
-
-/* SKILLS */
+/* BARRAS */
 .barra {
     background: #222;
     height: 15px;
     margin-bottom: 10px;
-    border-radius: 5px;
-    overflow: hidden;
 }
 
 .progreso {
     height: 100%;
     width: 0;
-    background: linear-gradient(90deg, #00ffcc, #00ffaa);
-    transition: width 1.5s ease;
-}
-
-/* TEXTO */
-h1, h2, h3 {
-    text-shadow: 0 0 10px #00ffcc55;
-}
-
-/* MATRIX */
-canvas {
-    position: fixed;
-    top: 0;
-    left: 0;
-    z-index: -2;
-    opacity: 0.2;
+    background: #00ffcc;
+    transition: width 1s;
 }
