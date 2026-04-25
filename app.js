@@ -29,7 +29,8 @@ const datos = {
         <h2>Experiencia</h2>
         <ul>
             <li>Proyecto Inventario Java MVC</li>
-            <li>CRUD Agenda</li>
+            <li>CRUD Agenda Contactos</li>
+            <li>Desarrollo Web</li>
         </ul>
     `,
 
@@ -48,25 +49,39 @@ function cargar() {
 }
 
 function mostrar(id) {
+    // Cambiar módulos
     document.querySelectorAll('.modulo').forEach(sec => {
         sec.classList.remove('activo');
     });
     document.getElementById(id).classList.add('activo');
+
+    // Activar botón
+    document.querySelectorAll('.menu button').forEach(btn => {
+        btn.classList.remove('activo');
+    });
+
+    event.target.classList.add('activo');
 }
 
-// ================= HACKER =================
-const texto = "> Iniciando...\n> Acceso concedido ✔\n> Bienvenido Andrés\n";
+// ================= HACKER TEXTO =================
+const texto = `
+> Iniciando sistema...
+> Cargando módulos...
+> Acceso concedido ✔
+> Bienvenido Andrés Galindo
+`;
+
 let i = 0;
 
 function escribir() {
     if (i < texto.length) {
         document.getElementById("terminal").innerHTML += texto.charAt(i);
         i++;
-        setTimeout(escribir, 30);
+        setTimeout(escribir, 25);
     }
 }
 
-// ================= MATRIX =================
+// ================= FONDO MATRIX =================
 const canvas = document.createElement("canvas");
 document.body.appendChild(canvas);
 
@@ -82,7 +97,7 @@ const columnas = canvas.width / fontSize;
 const drops = Array(Math.floor(columnas)).fill(1);
 
 function draw() {
-    ctx.fillStyle = "rgba(0,0,0,0.1)";
+    ctx.fillStyle = "rgba(0,0,0,0.08)";
     ctx.fillRect(0, 0, canvas.width, canvas.height);
 
     ctx.fillStyle = "#00ffcc";
@@ -102,7 +117,7 @@ function draw() {
 
 setInterval(draw, 40);
 
-// ================= INIT =================
+// ================= INICIO =================
 window.onload = () => {
     cargar();
     escribir();
