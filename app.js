@@ -3,7 +3,7 @@ document.addEventListener("DOMContentLoaded", () => {
     const datos = {
         info: `
             <h1>Andrés Galindo</h1>
-            <p>💻 Desarrollador en formación apasionado por el backend y web.</p>
+            <p>💻 Desarrollador en formación</p>
 
             <button class="btn">Descargar CV</button>
 
@@ -19,29 +19,9 @@ document.addEventListener("DOMContentLoaded", () => {
             <div class="barra"><div class="progreso" data-width="75%"></div></div>
         `,
 
-        academica: `
-            <h2>Académico</h2>
-            <ul>
-                <li>Bachiller</li>
-                <li>SENA - Sistemas</li>
-                <li>Ingeniería en curso</li>
-            </ul>
-        `,
-
-        experiencia: `
-            <h2>Experiencia</h2>
-            <ul>
-                <li>Proyecto Inventario Java MVC</li>
-                <li>CRUD Agenda Contactos</li>
-                <li>Desarrollo Web</li>
-            </ul>
-        `,
-
-        referencias: `
-            <h2>Referencias</h2>
-            <p>Juan Pérez</p>
-            <p>María Gómez</p>
-        `
+        academica: `<h2>Académico</h2><p>SENA - Sistemas</p>`,
+        experiencia: `<h2>Experiencia</h2><p>Proyectos Java y Web</p>`,
+        referencias: `<h2>Referencias</h2><p>Juan Pérez</p>`
     };
 
     // CARGAR CONTENIDO
@@ -96,4 +76,40 @@ document.addEventListener("DOMContentLoaded", () => {
     }
 
     escribir();
+
+    // ===== MATRIX =====
+    const canvas = document.createElement("canvas");
+    document.body.appendChild(canvas);
+
+    const ctx = canvas.getContext("2d");
+
+    canvas.width = window.innerWidth;
+    canvas.height = window.innerHeight;
+
+    const letras = "01";
+    const fontSize = 14;
+    const columnas = canvas.width / fontSize;
+
+    const drops = Array(Math.floor(columnas)).fill(1);
+
+    function draw() {
+        ctx.fillStyle = "rgba(0,0,0,0.08)";
+        ctx.fillRect(0, 0, canvas.width, canvas.height);
+
+        ctx.fillStyle = "#00ffaa";
+        ctx.font = fontSize + "px monospace";
+
+        for (let i = 0; i < drops.length; i++) {
+            const text = letras[Math.floor(Math.random() * letras.length)];
+            ctx.fillText(text, i * fontSize, drops[i] * fontSize);
+
+            if (drops[i] * fontSize > canvas.height && Math.random() > 0.975) {
+                drops[i] = 0;
+            }
+
+            drops[i]++;
+        }
+    }
+
+    setInterval(draw, 35);
 });
