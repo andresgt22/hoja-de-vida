@@ -1,4 +1,4 @@
-// ================= DATOS =================
+// DATOS
 const datos = {
     info: `
         <h1>Andrés Galindo</h1>
@@ -7,13 +7,13 @@ const datos = {
         <h3>Habilidades</h3>
 
         Java
-        <div class="barra"><div class="progreso" style="width:80%"></div></div>
+        <div class="barra"><div class="progreso" data-width="80%"></div></div>
 
         HTML/CSS
-        <div class="barra"><div class="progreso" style="width:70%"></div></div>
+        <div class="barra"><div class="progreso" data-width="70%"></div></div>
 
         MySQL
-        <div class="barra"><div class="progreso" style="width:75%"></div></div>
+        <div class="barra"><div class="progreso" data-width="75%"></div></div>
     `,
 
     academica: `
@@ -41,29 +41,43 @@ const datos = {
     `
 };
 
-// ================= FUNCIONES =================
+// CARGAR CONTENIDO
 function cargar() {
     for (let clave in datos) {
         document.getElementById(clave).innerHTML = datos[clave];
     }
+    animarBarras();
 }
 
-function mostrar(id) {
-    // Cambiar módulos
+// CAMBIAR SECCIONES
+function mostrar(e, id) {
     document.querySelectorAll('.modulo').forEach(sec => {
         sec.classList.remove('activo');
     });
+
     document.getElementById(id).classList.add('activo');
 
-    // Activar botón
     document.querySelectorAll('.menu button').forEach(btn => {
         btn.classList.remove('activo');
     });
 
-    event.target.classList.add('activo');
+    e.target.classList.add('activo');
+
+    animarBarras();
 }
 
-// ================= HACKER TEXTO =================
+// ANIMAR BARRAS
+function animarBarras() {
+    document.querySelectorAll('.progreso').forEach(bar => {
+        const width = bar.getAttribute('data-width');
+        bar.style.width = "0";
+        setTimeout(() => {
+            bar.style.width = width;
+        }, 300);
+    });
+}
+
+// TEXTO TERMINAL
 const texto = `
 > Iniciando sistema...
 > Cargando módulos...
@@ -81,7 +95,7 @@ function escribir() {
     }
 }
 
-// ================= FONDO MATRIX =================
+// MATRIX
 const canvas = document.createElement("canvas");
 document.body.appendChild(canvas);
 
@@ -117,7 +131,7 @@ function draw() {
 
 setInterval(draw, 40);
 
-// ================= INICIO =================
+// INICIO
 window.onload = () => {
     cargar();
     escribir();
