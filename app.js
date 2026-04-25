@@ -1,143 +1,106 @@
-// DATOS
-const datos = {
-    info: `
-        <h1>Andrés Galindo</h1>
-        <p>Desarrollador en formación</p>
+// ESPERAR A QUE CARGUE TODO
+document.addEventListener("DOMContentLoaded", () => {
 
-        <h3>Habilidades</h3>
+    // DATOS
+    const datos = {
+        info: `
+            <h1>Andrés Galindo</h1>
+            <p>Desarrollador en formación</p>
 
-        Java
-        <div class="barra"><div class="progreso" data-width="80%"></div></div>
+            <h3>Habilidades</h3>
 
-        HTML/CSS
-        <div class="barra"><div class="progreso" data-width="70%"></div></div>
+            Java
+            <div class="barra"><div class="progreso" data-width="80%"></div></div>
 
-        MySQL
-        <div class="barra"><div class="progreso" data-width="75%"></div></div>
-    `,
+            HTML/CSS
+            <div class="barra"><div class="progreso" data-width="70%"></div></div>
 
-    academica: `
-        <h2>Académico</h2>
-        <ul>
-            <li>Bachiller</li>
-            <li>SENA - Sistemas</li>
-            <li>Ingeniería en curso</li>
-        </ul>
-    `,
+            MySQL
+            <div class="barra"><div class="progreso" data-width="75%"></div></div>
+        `,
 
-    experiencia: `
-        <h2>Experiencia</h2>
-        <ul>
-            <li>Proyecto Inventario Java MVC</li>
-            <li>CRUD Agenda Contactos</li>
-            <li>Desarrollo Web</li>
-        </ul>
-    `,
+        academica: `
+            <h2>Académico</h2>
+            <ul>
+                <li>Bachiller</li>
+                <li>SENA - Sistemas</li>
+                <li>Ingeniería en curso</li>
+            </ul>
+        `,
 
-    referencias: `
-        <h2>Referencias</h2>
-        <p>Juan Pérez</p>
-        <p>María Gómez</p>
-    `
-};
+        experiencia: `
+            <h2>Experiencia</h2>
+            <ul>
+                <li>Proyecto Inventario Java MVC</li>
+                <li>CRUD Agenda Contactos</li>
+                <li>Desarrollo Web</li>
+            </ul>
+        `,
 
-// CARGAR CONTENIDO
-function cargar() {
+        referencias: `
+            <h2>Referencias</h2>
+            <p>Juan Pérez</p>
+            <p>María Gómez</p>
+        `
+    };
+
+    // CARGAR CONTENIDO
     for (let clave in datos) {
         document.getElementById(clave).innerHTML = datos[clave];
     }
+
+    // BOTONES (YA FUNCIONA 🔥)
+    document.querySelectorAll('.menu button').forEach(btn => {
+        btn.addEventListener('click', () => {
+
+            const id = btn.getAttribute('data-id');
+
+            document.querySelectorAll('.modulo').forEach(sec => {
+                sec.classList.remove('activo');
+            });
+
+            document.getElementById(id).classList.add('activo');
+
+            document.querySelectorAll('.menu button').forEach(b => {
+                b.classList.remove('activo');
+            });
+
+            btn.classList.add('activo');
+
+            animarBarras();
+        });
+    });
+
+    // ANIMAR BARRAS
+    function animarBarras() {
+        document.querySelectorAll('.progreso').forEach(bar => {
+            const width = bar.getAttribute('data-width');
+            bar.style.width = "0";
+            setTimeout(() => {
+                bar.style.width = width;
+            }, 200);
+        });
+    }
+
     animarBarras();
-}
 
-// BOTONES (FIX PRO)
-document.querySelectorAll('.menu button').forEach(btn => {
-    btn.addEventListener('click', () => {
-
-        const id = btn.getAttribute('data-id');
-
-        document.querySelectorAll('.modulo').forEach(sec => {
-            sec.classList.remove('activo');
-        });
-
-        document.getElementById(id).classList.add('activo');
-
-        document.querySelectorAll('.menu button').forEach(b => {
-            b.classList.remove('activo');
-        });
-
-        btn.classList.add('activo');
-
-        animarBarras();
-    });
-});
-
-// ANIMAR BARRAS
-function animarBarras() {
-    document.querySelectorAll('.progreso').forEach(bar => {
-        const width = bar.getAttribute('data-width');
-        bar.style.width = "0";
-        setTimeout(() => {
-            bar.style.width = width;
-        }, 300);
-    });
-}
-
-// TERMINAL
-const texto = `
+    // TERMINAL
+    const texto = `
 > Iniciando sistema...
 > Cargando módulos...
 > Acceso concedido ✔
 > Bienvenido Andrés Galindo
 `;
 
-let i = 0;
+    let i = 0;
 
-function escribir() {
-    if (i < texto.length) {
-        document.getElementById("terminal").innerHTML += texto.charAt(i);
-        i++;
-        setTimeout(escribir, 25);
-    }
-}
-
-// MATRIX
-const canvas = document.createElement("canvas");
-document.body.appendChild(canvas);
-
-const ctx = canvas.getContext("2d");
-
-canvas.width = window.innerWidth;
-canvas.height = window.innerHeight;
-
-const letras = "01";
-const fontSize = 14;
-const columnas = canvas.width / fontSize;
-
-const drops = Array(Math.floor(columnas)).fill(1);
-
-function draw() {
-    ctx.fillStyle = "rgba(0,0,0,0.08)";
-    ctx.fillRect(0, 0, canvas.width, canvas.height);
-
-    ctx.fillStyle = "#00ffcc";
-    ctx.font = fontSize + "px monospace";
-
-    for (let i = 0; i < drops.length; i++) {
-        const text = letras[Math.floor(Math.random() * letras.length)];
-        ctx.fillText(text, i * fontSize, drops[i] * fontSize);
-
-        if (drops[i] * fontSize > canvas.height) {
-            drops[i] = 0;
+    function escribir() {
+        if (i < texto.length) {
+            document.getElementById("terminal").innerHTML += texto.charAt(i);
+            i++;
+            setTimeout(escribir, 25);
         }
-
-        drops[i]++;
     }
-}
 
-setInterval(draw, 40);
-
-// INICIO
-window.onload = () => {
-    cargar();
     escribir();
-};
+});
