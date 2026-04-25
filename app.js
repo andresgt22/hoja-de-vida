@@ -3,7 +3,7 @@ document.addEventListener("DOMContentLoaded", () => {
     const datos = {
         info: `
             <h1>Andrés Galindo</h1>
-            <p>💻 Desarrollador en formación</p>
+            <p>Desarrollador en formación</p>
 
             <h3>Habilidades</h3>
 
@@ -17,9 +17,29 @@ document.addEventListener("DOMContentLoaded", () => {
             <div class="barra"><div class="progreso" data-width="75%"></div></div>
         `,
 
-        academica: `<h2>Académico</h2><p>SENA - Sistemas</p>`,
-        experiencia: `<h2>Experiencia</h2><p>Proyectos Java y Web</p>`,
-        referencias: `<h2>Referencias</h2><p>Juan Pérez</p>`
+        academica: `
+            <h2>Académico</h2>
+            <ul>
+                <li>Bachiller</li>
+                <li>SENA - Sistemas</li>
+                <li>Ingeniería en curso</li>
+            </ul>
+        `,
+
+        experiencia: `
+            <h2>Experiencia</h2>
+            <ul>
+                <li>Proyecto Inventario Java MVC</li>
+                <li>CRUD Agenda Contactos</li>
+                <li>Desarrollo Web</li>
+            </ul>
+        `,
+
+        referencias: `
+            <h2>Referencias</h2>
+            <p>Juan Pérez</p>
+            <p>María Gómez</p>
+        `
     };
 
     // CARGAR CONTENIDO
@@ -49,7 +69,7 @@ document.addEventListener("DOMContentLoaded", () => {
         });
     });
 
-    // ANIMAR BARRAS
+    // BARRAS
     function animarBarras() {
         document.querySelectorAll('.progreso').forEach(bar => {
             bar.style.width = "0";
@@ -62,14 +82,19 @@ document.addEventListener("DOMContentLoaded", () => {
     animarBarras();
 
     // TERMINAL
-    const texto = `> Iniciando sistema...\n> Acceso concedido ✔\n> Bienvenido Andrés Galindo\n`;
+    const texto = `
+> Iniciando sistema...
+> Cargando módulos...
+> Acceso concedido ✔
+> Bienvenido Andrés Galindo
+`;
     let i = 0;
 
     function escribir() {
         if (i < texto.length) {
-            document.getElementById("terminal").innerHTML += texto[i];
+            document.getElementById("terminal").innerHTML += texto.charAt(i);
             i++;
-            setTimeout(escribir, 20);
+            setTimeout(escribir, 25);
         }
     }
 
@@ -94,7 +119,7 @@ document.addEventListener("DOMContentLoaded", () => {
         ctx.fillStyle = "rgba(0,0,0,0.08)";
         ctx.fillRect(0, 0, canvas.width, canvas.height);
 
-        ctx.fillStyle = "#00ffaa";
+        ctx.fillStyle = "#00ffcc";
         ctx.font = fontSize + "px monospace";
 
         for (let i = 0; i < drops.length; i++) {
@@ -109,5 +134,5 @@ document.addEventListener("DOMContentLoaded", () => {
         }
     }
 
-    setInterval(draw, 35);
+    setInterval(draw, 40);
 });
