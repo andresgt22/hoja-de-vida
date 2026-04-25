@@ -4,9 +4,7 @@
     <meta charset="UTF-8">
     <title>CV - Andrés Galindo</title>
 
-    <!-- FUENTE PRO -->
     <link href="https://fonts.googleapis.com/css2?family=JetBrains+Mono&display=swap" rel="stylesheet">
-
     <link rel="stylesheet" href="styles.css">
 </head>
 <body>
@@ -18,22 +16,20 @@
         <h2 class="logo">AG</h2>
 
         <div class="menu">
-            <button onclick="mostrar(event,'info')" class="activo"> Inicio</button>
-            <button onclick="mostrar(event,'academica')">🎓 Académico</button>
-            <button onclick="mostrar(event,'experiencia')">💼 Experiencia</button>
-            <button onclick="mostrar(event,'referencias')">📞 Referencias</button>
+            <button data-id="info" class="activo">🏠 Inicio</button>
+            <button data-id="academica">🎓 Académico</button>
+            <button data-id="experiencia">💼 Experiencia</button>
+            <button data-id="referencias">📞 Referencias</button>
         </div>
     </aside>
 
     <!-- CONTENIDO -->
     <main class="content">
 
-        <!-- TERMINAL -->
         <section class="hacker">
             <pre id="terminal"></pre>
         </section>
 
-        <!-- SECCIONES -->
         <section id="info" class="modulo activo"></section>
         <section id="academica" class="modulo"></section>
         <section id="experiencia" class="modulo"></section>
@@ -45,5 +41,4 @@
 
 <script src="app.js"></script>
 </body>
-</html>
 </html>
