@@ -3,7 +3,6 @@ const datos = {
     info: `
         <h1>Andrés Galindo</h1>
         <p>Desarrollador en formación</p>
-        <img src="foto.jpg" width="120">
 
         <h3>Habilidades</h3>
 
@@ -30,8 +29,7 @@ const datos = {
         <h2>Experiencia</h2>
         <ul>
             <li>Proyecto Inventario Java MVC</li>
-            <li>CRUD Agenda Contactos</li>
-            <li>Desarrollo Web</li>
+            <li>CRUD Agenda</li>
         </ul>
     `,
 
@@ -56,25 +54,15 @@ function mostrar(id) {
     document.getElementById(id).classList.add('activo');
 }
 
-function toggleModo() {
-    document.body.classList.toggle('claro');
-}
-
-// ================= HACKER TEXTO =================
-const texto = `
-> Iniciando sistema...
-> Cargando datos...
-> Acceso concedido ✔
-> Bienvenido Andrés Galindo
-`;
-
+// ================= HACKER =================
+const texto = "> Iniciando...\n> Acceso concedido ✔\n> Bienvenido Andrés\n";
 let i = 0;
 
 function escribir() {
     if (i < texto.length) {
         document.getElementById("terminal").innerHTML += texto.charAt(i);
         i++;
-        setTimeout(escribir, 25);
+        setTimeout(escribir, 30);
     }
 }
 
@@ -91,24 +79,20 @@ const letras = "01";
 const fontSize = 14;
 const columnas = canvas.width / fontSize;
 
-const drops = [];
-
-for (let x = 0; x < columnas; x++) {
-    drops[x] = 1;
-}
+const drops = Array(Math.floor(columnas)).fill(1);
 
 function draw() {
-    ctx.fillStyle = "rgba(0,0,0,0.05)";
+    ctx.fillStyle = "rgba(0,0,0,0.1)";
     ctx.fillRect(0, 0, canvas.width, canvas.height);
 
     ctx.fillStyle = "#00ffcc";
     ctx.font = fontSize + "px monospace";
 
     for (let i = 0; i < drops.length; i++) {
-        const text = letras.charAt(Math.floor(Math.random() * letras.length));
+        const text = letras[Math.floor(Math.random() * letras.length)];
         ctx.fillText(text, i * fontSize, drops[i] * fontSize);
 
-        if (drops[i] * fontSize > canvas.height && Math.random() > 0.975) {
+        if (drops[i] * fontSize > canvas.height) {
             drops[i] = 0;
         }
 
@@ -116,8 +100,10 @@ function draw() {
     }
 }
 
-setInterval(draw, 33);
+setInterval(draw, 40);
 
-// INICIO
-cargar();
-escribir();
+// ================= INIT =================
+window.onload = () => {
+    cargar();
+    escribir();
+};
