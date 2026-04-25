@@ -56,6 +56,10 @@ body::before {
     transform: translateX(5px);
 }
 
+.menu button:active {
+    transform: scale(0.95);
+}
+
 .menu button.activo {
     background: rgba(0,255,204,0.15);
     color: #00ffcc;
@@ -73,13 +77,18 @@ body::before {
     border: 1px solid rgba(0,255,204,0.2);
 }
 
-/* MODULOS */
+/* MODULOS CON ANIMACIÓN */
 .modulo {
     display: none;
+    opacity: 0;
+    transform: translateY(10px);
+    transition: 0.3s;
 }
 
 .modulo.activo {
     display: block;
+    opacity: 1;
+    transform: translateY(0);
 }
 
 /* TERMINAL */
@@ -88,6 +97,16 @@ body::before {
     padding: 15px;
     border-radius: 10px;
     margin-bottom: 20px;
+    position: relative;
+}
+
+#terminal::after {
+    content: "|";
+    animation: blink 1s infinite;
+}
+
+@keyframes blink {
+    50% { opacity: 0; }
 }
 
 /* BARRAS */
@@ -95,11 +114,33 @@ body::before {
     background: #222;
     height: 15px;
     margin-bottom: 10px;
+    border-radius: 5px;
+    overflow: hidden;
 }
 
 .progreso {
     height: 100%;
     width: 0;
-    background: #00ffcc;
+    background: linear-gradient(90deg, #00ffcc, #00ffaa);
     transition: width 1s;
+}
+
+.barra:hover .progreso {
+    box-shadow: 0 0 10px #00ffcc, 0 0 20px #00ffcc;
+}
+
+/* BOTÓN PRO */
+.btn {
+    background: #00ffcc;
+    color: black;
+    padding: 10px 15px;
+    border: none;
+    border-radius: 8px;
+    cursor: pointer;
+    margin-top: 10px;
+    transition: 0.3s;
+}
+
+.btn:hover {
+    box-shadow: 0 0 15px #00ffcc;
 }
