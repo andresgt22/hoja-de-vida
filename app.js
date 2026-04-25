@@ -1,11 +1,11 @@
-// ESPERAR TODO
-window.onload = function () {
+document.addEventListener("DOMContentLoaded", () => {
 
-    // DATOS
     const datos = {
         info: `
             <h1>Andrés Galindo</h1>
-            <p>Desarrollador en formación</p>
+            <p>💻 Desarrollador en formación apasionado por el backend y web.</p>
+
+            <button class="btn">Descargar CV</button>
 
             <h3>Habilidades</h3>
 
@@ -18,40 +18,60 @@ window.onload = function () {
             MySQL
             <div class="barra"><div class="progreso" data-width="75%"></div></div>
         `,
-        academica: `<h2>Académico</h2><p>SENA - Sistemas</p>`,
-        experiencia: `<h2>Experiencia</h2><p>Proyectos Java y Web</p>`,
-        referencias: `<h2>Referencias</h2><p>Juan Pérez</p>`
+
+        academica: `
+            <h2>Académico</h2>
+            <ul>
+                <li>Bachiller</li>
+                <li>SENA - Sistemas</li>
+                <li>Ingeniería en curso</li>
+            </ul>
+        `,
+
+        experiencia: `
+            <h2>Experiencia</h2>
+            <ul>
+                <li>Proyecto Inventario Java MVC</li>
+                <li>CRUD Agenda Contactos</li>
+                <li>Desarrollo Web</li>
+            </ul>
+        `,
+
+        referencias: `
+            <h2>Referencias</h2>
+            <p>Juan Pérez</p>
+            <p>María Gómez</p>
+        `
     };
 
-    // CARGAR
+    // CARGAR CONTENIDO
     Object.keys(datos).forEach(id => {
         document.getElementById(id).innerHTML = datos[id];
     });
 
-    // BOTONES (FORZADO)
-    const botones = document.querySelectorAll('.menu button');
+    // BOTONES
+    document.querySelectorAll('.menu button').forEach(btn => {
+        btn.addEventListener('click', () => {
 
-    botones.forEach(btn => {
-        btn.onclick = function () {
+            const id = btn.dataset.id;
 
-            const id = this.dataset.id;
-
-            // módulos
             document.querySelectorAll('.modulo').forEach(sec => {
                 sec.classList.remove('activo');
             });
 
             document.getElementById(id).classList.add('activo');
 
-            // activo
-            botones.forEach(b => b.classList.remove('activo'));
-            this.classList.add('activo');
+            document.querySelectorAll('.menu button').forEach(b => {
+                b.classList.remove('activo');
+            });
+
+            btn.classList.add('activo');
 
             animarBarras();
-        };
+        });
     });
 
-    // BARRAS
+    // ANIMAR BARRAS
     function animarBarras() {
         document.querySelectorAll('.progreso').forEach(bar => {
             bar.style.width = "0";
@@ -64,7 +84,7 @@ window.onload = function () {
     animarBarras();
 
     // TERMINAL
-    const texto = `> Bienvenido Andrés Galindo\n> Sistema listo ✔\n`;
+    const texto = `> Iniciando sistema...\n> Acceso concedido ✔\n> Bienvenido Andrés Galindo\n`;
     let i = 0;
 
     function escribir() {
@@ -76,4 +96,4 @@ window.onload = function () {
     }
 
     escribir();
-};
+});
