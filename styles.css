@@ -89,7 +89,6 @@ body {
     overflow: hidden;
 }
 
-/* cursor */
 #terminal::after {
     content: "|";
     animation: blink 1s infinite;
@@ -97,6 +96,14 @@ body {
 
 @keyframes blink {
     50% { opacity: 0; }
+}
+
+/* FOTO */
+.foto {
+    width: 120px;
+    border-radius: 50%;
+    border: 2px solid #00ffcc;
+    margin: 10px 0;
 }
 
 /* BARRAS */
@@ -111,10 +118,6 @@ body {
     width: 0;
     background: #00ffcc;
     transition: width 1s;
-}
-
-.barra:hover .progreso {
-    box-shadow: 0 0 10px #00ffcc;
 }
 
 /* MATRIX */
