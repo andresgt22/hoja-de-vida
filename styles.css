@@ -1,7 +1,7 @@
 body {
     margin: 0;
     font-family: monospace;
-    background: black;
+    background: #0a0a0a;
     color: #00ffcc;
 }
 
@@ -37,6 +37,7 @@ body {
 .content {
     flex: 1;
     padding: 20px;
+    background: rgba(0,0,0,0.7);
 }
 
 /* MODULOS */
@@ -48,23 +49,19 @@ body {
     display: block;
 }
 
-/* HACKER TERMINAL */
+/* TERMINAL */
 .hacker {
-    background: rgba(0,0,0,0.8);
+    background: rgba(0,0,0,0.9);
     padding: 15px;
     border: 1px solid #00ffcc;
     margin-bottom: 20px;
 }
 
-#terminal {
-    height: 120px;
-    overflow: hidden;
-}
-
-/* SKILLS */
+/* BARRAS */
 .barra {
     background: #222;
     height: 15px;
+    margin-bottom: 10px;
 }
 
 .progreso {
@@ -78,4 +75,5 @@ canvas {
     top: 0;
     left: 0;
     z-index: -1;
+    opacity: 0.2; /* 🔥 clave para que no tape todo */
 }
