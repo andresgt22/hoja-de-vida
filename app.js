@@ -5,8 +5,6 @@ document.addEventListener("DOMContentLoaded", () => {
             <h1>Andrés Galindo</h1>
             <p>💻 Desarrollador en formación</p>
 
-            <button class="btn">Descargar CV</button>
-
             <h3>Habilidades</h3>
 
             Java
