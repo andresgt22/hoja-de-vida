@@ -20,7 +20,7 @@ document.addEventListener("DOMContentLoaded", () => {
         academica: `
             <h2>Académico</h2>
             <ul>
-                <li>Bachiller</li>
+                <li>Bachiller profesional</li>
                 <li>SENA - Sistemas</li>
                 <li>Ingeniería en curso</li>
             </ul>
