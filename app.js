@@ -2,7 +2,7 @@ document.addEventListener("DOMContentLoaded", () => {
 
     const datos = {
         info: `
-            <h1>Andrés Galindo</h1>
+            <h1>Andrés Felipe Galindo</h1>
             <p>Desarrollador en formación</p>
 
             <h3>Habilidades</h3>
